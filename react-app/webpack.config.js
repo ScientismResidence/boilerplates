@@ -4,18 +4,20 @@ const DotenvWebpackPlugin = require('dotenv-webpack');
 
 module.exports = {
     mode: 'development',
+    entry: './src/index.js',
     output: {
         path: path.join(__dirname, '/dist'),
-        filename: 'index.bundle.js'
+        filename: 'index.bundle.js',
     },
-    // webpack 5 comes with devServer which loads in development mode
     devServer: {
         static: {
             directory: path.join(__dirname, 'src'),
         },
-        port: 8080
+        port: 8080,
+        open: true,
+        hot: true,
+        liveReload: true
     },
-    // Rules of how webpack will take our files, complie & bundle them for the browser 
     module: {
         rules: [
             {
@@ -31,7 +33,7 @@ module.exports = {
             }
         ]
     },
-    devtool: 'source-map',
+    devtool: 'inline-source-map',
     plugins: [
         new HtmlWebpackPlugin({ template: './src/index.html' }),
         new DotenvWebpackPlugin({
