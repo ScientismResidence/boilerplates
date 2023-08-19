@@ -5,9 +5,5 @@ import App from "./app"
 
 import "./app.css"
 
-const root = createRoot(document.getElementById('app'))
-root.render(
-    <StrictMode>
-        <App />
-    </StrictMode>
-)
+const root = createRoot(document.getElementById('app') as Element)
+root.render(<App />);
